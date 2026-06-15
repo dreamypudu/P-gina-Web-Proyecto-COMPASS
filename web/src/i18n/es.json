@@ -22,13 +22,14 @@
     "home": "Inicio"
   },
   "hero": {
-    "badge": "Psicometría conductual · no autorreporte",
+    "badge": "Competency & Profiling Simulation System",
     "titleLead": "Mide lo que",
     "titleDo": "hacen",
     "titleMid": ", no lo que",
     "titleSay": "dicen",
     "titleTail": ".",
     "sub": "COMPASS es la plataforma de simulación que <strong>evalúa y entrena</strong> competencias socioemocionales observando la <strong>conducta real</strong> de las personas bajo presión — no su autorreporte.",
+    "contextLine": "COMPASS es un <strong>test psicométrico conductual</strong>: no solo pregunta qué harías, te sitúa en un contexto y hace que cada decisión tenga consecuencias. Así observa la consistencia entre intención, acción e impacto.",
     "ctaPrimary": "Solicita una demo",
     "ctaSecondary": "Ver cómo funciona",
     "mockupCaption": "Vista del simulador — COMPASS: Gestión en Salud",

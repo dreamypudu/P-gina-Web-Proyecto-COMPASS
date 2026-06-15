@@ -22,13 +22,14 @@
     "home": "Home"
   },
   "hero": {
-    "badge": "Behavioral psychometrics · not self-report",
+    "badge": "Competency & Profiling Simulation System",
     "titleLead": "Measure what they",
     "titleDo": "do",
     "titleMid": ", not what they",
     "titleSay": "say",
     "titleTail": ".",
     "sub": "COMPASS is the simulation platform that <strong>assesses and trains</strong> socio-emotional competencies by observing how people <strong>actually behave</strong> under pressure — not their self-report.",
+    "contextLine": "COMPASS is a <strong>behavioral psychometric test</strong>: it does not just ask what you would do; it places you in context and makes every decision carry consequences. That is how it observes consistency between intention, action and impact.",
     "ctaPrimary": "Request a demo",
     "ctaSecondary": "See how it works",
     "mockupCaption": "Simulator view — COMPASS: Healthcare Management",

@@ -28,6 +28,10 @@ const t = useTranslations(lang);
 
       <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink-dim" data-reveal style="--reveal-delay:220ms" set:html={t('hero.sub')} />
 
+      <div class="mt-5 max-w-xl rounded-2xl border border-cyan/20 bg-cyan/5 p-4 text-sm leading-relaxed text-ink" data-reveal style="--reveal-delay:260ms">
+        <p set:html={t('hero.contextLine')} />
+      </div>
+
       <div class="mt-9 flex flex-wrap items-center gap-4" data-reveal style="--reveal-delay:300ms">
         <a href="#contacto" class="group inline-flex items-center gap-2 rounded-full bg-cyan px-6 py-3.5 font-bold text-base-2 shadow-xl shadow-cyan/25 transition hover:bg-white hover:shadow-cyan/40">
           {t('hero.ctaPrimary')}
