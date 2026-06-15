@@ -1,0 +1,236 @@
+@import "tailwindcss";
+
+/* ----------------------------------------------------------------------------
+   COMPASS — design tokens
+   Dark "data / cockpit" palette. Cyan primary, indigo for AI/ML.
+---------------------------------------------------------------------------- */
+@theme {
+  /* Backgrounds */
+  --color-base: #070b14;
+  --color-base-2: #0b1220;
+  --color-surface: #111827;
+  --color-surface-2: #0f172a;
+
+  /* Accents */
+  --color-cyan: #22d3ee;
+  --color-cyan-soft: #38bdf8;
+  --color-indigo: #6366f1;
+
+  /* Sector accents (game visuals only) */
+  --color-sector-blue: #3b82f6;
+  --color-sector-red: #ef4444;
+  --color-sector-yellow: #f59e0b;
+
+  /* Text */
+  --color-ink: #e5e7eb;
+  --color-ink-dim: #94a3b8;
+
+  /* Type */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+
+  /* Radius */
+  --radius-2xl: 1rem;
+}
+
+/* ----------------------------------------------------------------------------
+   Base
+---------------------------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  background-color: var(--color-base);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-base);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-cyan) 35%, transparent);
+  color: #fff;
+}
+
+h1, h2, h3, h4 {
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+/* Visible focus for keyboard users */
+:focus-visible {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ----------------------------------------------------------------------------
+   Utilities
+---------------------------------------------------------------------------- */
+@layer utilities {
+  /* Kicker label */
+  .kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: var(--color-cyan);
+  }
+  .kicker::before {
+    content: "";
+    width: 1.75rem;
+    height: 1px;
+    background: linear-gradient(90deg, var(--color-cyan), transparent);
+  }
+
+  /* Cyan→indigo gradient text */
+  .text-gradient {
+    background: linear-gradient(100deg, #fff 0%, var(--color-cyan-soft) 55%, var(--color-indigo) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Card surface */
+  .card {
+    background: color-mix(in srgb, var(--color-surface) 70%, transparent);
+    border: 1px solid rgb(255 255 255 / 0.10);
+    border-radius: var(--radius-2xl);
+    box-shadow: 0 20px 60px -25px rgb(0 0 0 / 0.8);
+    backdrop-filter: blur(6px);
+  }
+
+  /* Hover lift */
+  .lift {
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.35s ease, box-shadow 0.35s ease;
+    will-change: transform;
+  }
+  .lift:hover {
+    transform: translateY(-6px);
+    border-color: color-mix(in srgb, var(--color-cyan) 45%, transparent);
+    box-shadow: 0 30px 70px -30px rgb(34 211 238 / 0.35);
+  }
+
+  /* Soft cyan glow halo */
+  .glow {
+    box-shadow: 0 0 0 1px rgb(34 211 238 / 0.25),
+      0 0 40px -8px rgb(34 211 238 / 0.45);
+  }
+
+  /* Neural dot-grid background */
+  .bg-dots {
+    background-image: radial-gradient(rgb(148 163 184 / 0.18) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  /* Radial glow blobs */
+  .bg-aura {
+    background:
+      radial-gradient(60% 50% at 15% 10%, rgb(34 211 238 / 0.12), transparent 60%),
+      radial-gradient(50% 50% at 85% 0%, rgb(99 102 241 / 0.14), transparent 60%);
+  }
+
+  /* Thin hairline divider */
+  .hairline {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.12), transparent);
+  }
+}
+
+/* ----------------------------------------------------------------------------
+   Scroll-reveal motion
+---------------------------------------------------------------------------- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Animated underline for nav links */
+.navlink {
+  position: relative;
+}
+.navlink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1.5px;
+  background: var(--color-cyan);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+.navlink:hover::after,
+.navlink[aria-current="true"]::after {
+  transform: scaleX(1);
+}
+
+/* Pulse ring (engine core / CTA) */
+@keyframes pulseRing {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  70% { transform: scale(1.25); opacity: 0; }
+  100% { opacity: 0; }
+}
+.pulse-ring { animation: pulseRing 2.8s ease-out infinite; }
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.floaty { animation: floaty 6s ease-in-out infinite; }
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+.telemetry { animation: blink 1.6s steps(2, jump-none) infinite; }
+
+/* Animated wordmark (logo-animado) — driven by inline styles on each <path> */
+@keyframes drawStroke { to { stroke-dashoffset: 0; } }
+@keyframes fillSolid {
+  from { fill-opacity: 0; }
+  to { fill-opacity: 1; stroke-width: 0; }
+}
+@keyframes finalGlow {
+  0% { filter: drop-shadow(0 0 0 rgb(34 211 238 / 0)); }
+  50% { filter: drop-shadow(0 0 12px rgb(34 211 238 / 0.65)); }
+  100% { filter: drop-shadow(0 0 5px rgb(34 211 238 / 0.3)); }
+}
+
+/* ----------------------------------------------------------------------------
+   Reduced motion — disable all non-essential animation
+---------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "compass-web",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "COMPASS — Competency & Profiling Simulation System. Bilingual marketing site.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.7.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.0",
+    "tailwindcss": "^4.1.0"
+  }
+}

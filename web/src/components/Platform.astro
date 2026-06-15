@@ -1,0 +1,76 @@
+---
+import { useTranslations, type Lang } from '../i18n/utils';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const rings = t<{ name: string; desc: string }[]>('platform.rings');
+const branches = t<string[]>('platform.branches');
+const pos = ['left-0 top-0', 'right-0 top-0', 'left-0 bottom-0', 'right-0 bottom-0'];
+---
+<section id="plataforma" class="relative py-24 lg:py-32">
+  <div class="absolute inset-0 bg-aura opacity-60" aria-hidden="true"></div>
+  <div class="relative mx-auto grid max-w-7xl items-center gap-14 px-5 lg:grid-cols-2 lg:px-8">
+    <!-- copy -->
+    <div>
+      <p class="kicker" data-reveal>{t('platform.kicker')}</p>
+      <h2 class="mt-5 text-3xl sm:text-4xl lg:text-5xl" data-reveal style="--reveal-delay:80ms">{t('platform.title')}</h2>
+      <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink-dim" data-reveal style="--reveal-delay:140ms" set:html={t('platform.body')} />
+
+      <div class="mt-8 flex flex-wrap items-center gap-2" data-reveal style="--reveal-delay:200ms">
+        <span class="text-xs font-semibold uppercase text-ink-dim">{t('platform.branchLabel')}:</span>
+        {branches.map((b) => (
+          <span class="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs font-medium text-ink">{b}</span>
+        ))}
+      </div>
+    </div>
+
+    <!-- diagram -->
+    <div class="relative mx-auto aspect-square w-full max-w-md" data-reveal style="--reveal-delay:160ms" data-diagram>
+      <!-- connectors -->
+      <svg class="absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <line x1="50" y1="50" x2="14" y2="14" class="connector" />
+        <line x1="50" y1="50" x2="86" y2="14" class="connector" />
+        <line x1="50" y1="50" x2="14" y2="86" class="connector" />
+        <line x1="50" y1="50" x2="86" y2="86" class="connector" />
+      </svg>
+
+      <!-- core -->
+      <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div class="relative grid h-28 w-28 place-items-center rounded-full border border-cyan/40 bg-base-2 text-center glow">
+          <span class="pulse-ring absolute inset-0 rounded-full border border-cyan/40"></span>
+          <span class="pulse-ring absolute inset-0 rounded-full border border-cyan/30" style="animation-delay:1.4s"></span>
+          <div>
+            <div class="text-[10px] uppercase text-ink-dim">{t('platform.coreSub')}</div>
+            <div class="text-lg font-extrabold text-gradient">{t('platform.coreLabel')}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ring nodes -->
+      {rings.map((r, i) => (
+        <div class={`group absolute ${pos[i]} w-[42%]`}>
+          <div class="card lift p-3 text-center">
+            <div class="text-sm font-bold text-white">{r.name}</div>
+            <div class="mt-1 max-h-0 overflow-hidden text-[11px] leading-snug text-ink-dim opacity-0 transition-all duration-300 group-hover:max-h-24 group-hover:opacity-100">{r.desc}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .connector {
+    stroke: var(--color-cyan);
+    stroke-width: 0.6;
+    stroke-dasharray: 60;
+    stroke-dashoffset: 60;
+    opacity: 0.5;
+    transition: stroke-dashoffset 1s ease-out;
+  }
+  [data-reveal].is-visible .connector { stroke-dashoffset: 0; }
+  .connector:nth-child(2) { transition-delay: 0.15s; }
+  .connector:nth-child(3) { transition-delay: 0.3s; }
+  .connector:nth-child(4) { transition-delay: 0.45s; }
+  @media (prefers-reduced-motion: reduce) { .connector { stroke-dashoffset: 0; } }
+</style>

@@ -1,0 +1,113 @@
+---
+import { useTranslations, type Lang } from '../i18n/utils';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const rows = t<{ says: string; does: string }[]>('dice.rows');
+---
+<section id="problema" class="relative py-24 lg:py-32">
+  <div class="mx-auto max-w-3xl px-5 text-center lg:px-8">
+    <p class="kicker justify-center" data-reveal>{t('dice.kicker')}</p>
+    <h2 class="mt-5 text-3xl sm:text-4xl lg:text-5xl" data-reveal style="--reveal-delay:80ms">{t('dice.title')}</h2>
+    <p class="mt-6 text-lg leading-relaxed text-ink-dim" data-reveal style="--reveal-delay:140ms">{t('dice.body')}</p>
+  </div>
+
+  <div class="mx-auto mt-12 max-w-4xl px-5 lg:px-8" data-reveal style="--reveal-delay:160ms">
+    <div class="reveal-wrap card overflow-hidden select-none" style="--pos:52%" data-reveal-slider>
+      <!-- HACE (base) -->
+      <div class="panel hace">
+        <div class="phead text-cyan"><span class="dot bg-cyan telemetry"></span>{t('dice.colDoes')}</div>
+        {rows.map((r) => (
+          <div class="prow"><span class="font-mono text-cyan-soft telemetry">{r.does}</span></div>
+        ))}
+      </div>
+
+      <!-- DICE (overlay, clipped) -->
+      <div class="panel dice" data-dice>
+        <div class="phead text-slate-500">{t('dice.colSays')}</div>
+        {rows.map((r) => (
+          <div class="prow"><span class="text-slate-700">{r.says}</span></div>
+        ))}
+      </div>
+
+      <!-- handle + control -->
+      <div class="handle" data-handle aria-hidden="true">
+        <div class="grip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6L4 12l5 6M15 6l5 6-5 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+      <input
+        type="range" min="0" max="100" value="52"
+        class="range-overlay" data-range
+        aria-label={t('dice.drag')}
+      />
+      <span class="drag-hint">{t('dice.drag')}</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .reveal-wrap { position: relative; touch-action: pan-y; }
+
+  .panel { padding: clamp(1rem, 3vw, 2rem); }
+  .phead {
+    font-size: 0.75rem; font-weight: 800; letter-spacing: 0;
+    text-transform: uppercase; padding-bottom: 1rem; margin-bottom: 0.5rem;
+    border-bottom: 1px solid currentColor; opacity: 0.95;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .dot { width: 0.5rem; height: 0.5rem; border-radius: 9999px; display: inline-block; }
+  .prow {
+    display: flex; align-items: center; min-height: 3.25rem;
+    border-bottom: 1px solid rgb(255 255 255 / 0.06);
+    font-size: 1rem;
+  }
+  .prow:last-child { border-bottom: 0; }
+
+  .hace { position: relative; background: var(--color-base); }
+  .hace .prow { border-bottom-color: rgb(34 211 238 / 0.12); }
+
+  .dice {
+    position: absolute; inset: 0; background: #eef2f7;
+    clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+  }
+  .dice .prow { border-bottom-color: rgb(15 23 42 / 0.10); }
+
+  .handle {
+    position: absolute; top: 0; bottom: 0; left: var(--pos);
+    width: 2px; background: var(--color-cyan);
+    transform: translateX(-1px); pointer-events: none;
+    box-shadow: 0 0 14px rgb(34 211 238 / 0.7);
+  }
+  .grip {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 2.5rem; height: 2.5rem; border-radius: 9999px;
+    background: var(--color-cyan); color: var(--color-base-2);
+    display: grid; place-items: center;
+    box-shadow: 0 6px 20px rgb(0 0 0 / 0.5);
+  }
+  .grip svg { width: 1.1rem; height: 1.1rem; }
+
+  .range-overlay {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    margin: 0; opacity: 0; cursor: ew-resize; -webkit-appearance: none; appearance: none;
+    background: transparent;
+  }
+  .range-overlay::-webkit-slider-thumb { -webkit-appearance: none; width: 3rem; height: 100%; cursor: ew-resize; }
+  .range-overlay::-moz-range-thumb { width: 3rem; height: 100%; border: 0; background: transparent; cursor: ew-resize; }
+
+  .drag-hint {
+    position: absolute; bottom: 0.75rem; left: 50%; transform: translateX(-50%);
+    font-size: 0.7rem; letter-spacing: 0; text-transform: uppercase;
+    color: var(--color-ink-dim); pointer-events: none; opacity: 0.7;
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-reveal-slider]').forEach((wrap) => {
+    const range = wrap.querySelector<HTMLInputElement>('[data-range]');
+    const set = (v: number) => wrap.style.setProperty('--pos', `${v}%`);
+    range?.addEventListener('input', () => set(Number(range.value)));
+  });
+</script>

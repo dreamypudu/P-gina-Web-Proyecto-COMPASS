@@ -1,0 +1,46 @@
+---
+import { useTranslations, type Lang } from '../i18n/utils';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+<section id="soluciones" class="relative py-24 lg:py-32">
+  <div class="mx-auto max-w-3xl px-5 text-center lg:px-8">
+    <p class="kicker justify-center" data-reveal>{t('solutions.kicker')}</p>
+    <h2 class="mt-5 text-3xl sm:text-4xl lg:text-5xl" data-reveal style="--reveal-delay:80ms">{t('solutions.title')}</h2>
+  </div>
+
+  <div class="mx-auto mt-14 grid max-w-6xl gap-6 px-5 lg:grid-cols-2 lg:px-8">
+    <!-- ASSESS -->
+    <article class="card lift slide-l flex flex-col p-8" data-reveal>
+      <div class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-cyan/30 bg-cyan/10 text-cyan">
+        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6" stroke-linecap="round"/></svg>
+      </div>
+      <p class="text-xs font-bold uppercase text-cyan">{t('solutions.assessTag')}</p>
+      <h3 class="mt-2 text-2xl">{t('solutions.assessTitle')}</h3>
+      <p class="mt-4 flex-1 leading-relaxed text-ink-dim">{t('solutions.assessBody')}</p>
+      <p class="mt-6 border-t border-white/10 pt-4 text-sm text-ink-dim"><span class="font-semibold text-white">{t('solutions.assessFoot')}</span></p>
+    </article>
+
+    <!-- TRAIN -->
+    <article class="card lift slide-r flex flex-col p-8" data-reveal style="--reveal-delay:120ms">
+      <div class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-indigo/40 bg-indigo/10 text-indigo">
+        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6.5 6.5l11 11M3 10l4-4M14 17l4-4M2 14l8 8M10 2l8 8M17 7l5-5M2 22l3-3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <p class="text-xs font-bold uppercase text-indigo">{t('solutions.trainTag')}</p>
+      <h3 class="mt-2 text-2xl">{t('solutions.trainTitle')}</h3>
+      <p class="mt-4 flex-1 leading-relaxed text-ink-dim">{t('solutions.trainBody')}</p>
+      <p class="mt-6 border-t border-white/10 pt-4 text-sm text-ink-dim"><span class="font-semibold text-white">{t('solutions.trainFoot')}</span></p>
+    </article>
+  </div>
+</section>
+
+<style>
+  .slide-l[data-reveal] { transform: translateX(-36px); }
+  .slide-r[data-reveal] { transform: translateX(36px); }
+  .slide-l[data-reveal].is-visible,
+  .slide-r[data-reveal].is-visible { transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .slide-l[data-reveal], .slide-r[data-reveal] { transform: none; }
+  }
+</style>

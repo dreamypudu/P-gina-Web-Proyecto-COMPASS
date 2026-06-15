@@ -1,0 +1,197 @@
+{
+  "meta": {
+    "title": "COMPASS — Mide competencias por conducta, no por autorreporte",
+    "description": "COMPASS es la plataforma de simulación que evalúa y entrena competencias socioemocionales observando la conducta real de las personas bajo presión — no su autorreporte.",
+    "ogAlt": "COMPASS — Competency & Profiling Simulation System"
+  },
+  "lang": {
+    "switchTo": "English",
+    "current": "Español",
+    "label": "Cambiar idioma"
+  },
+  "nav": {
+    "platform": "Plataforma",
+    "solutions": "Soluciones",
+    "how": "Cómo funciona",
+    "versions": "Versiones",
+    "about": "Nosotros",
+    "contact": "Contacto",
+    "demo": "Solicita una demo",
+    "menu": "Menú",
+    "close": "Cerrar",
+    "home": "Inicio"
+  },
+  "hero": {
+    "badge": "Psicometría conductual · no autorreporte",
+    "titleLead": "Mide lo que",
+    "titleDo": "hacen",
+    "titleMid": ", no lo que",
+    "titleSay": "dicen",
+    "titleTail": ".",
+    "sub": "COMPASS es la plataforma de simulación que <strong>evalúa y entrena</strong> competencias socioemocionales observando la <strong>conducta real</strong> de las personas bajo presión — no su autorreporte.",
+    "ctaPrimary": "Solicita una demo",
+    "ctaSecondary": "Ver cómo funciona",
+    "mockupCaption": "Vista del simulador — COMPASS: Gestión en Salud",
+    "mockupPlaceholder": "Captura / GIF del simulador",
+    "scroll": "Desplázate"
+  },
+  "story": {
+    "kicker": "El costo de equivocarse",
+    "title": "La entrevista perfecta. La decisión equivocada.",
+    "p1": "En el papel era impecable: CV pulido, entrevista brillante, test con todas las respuestas «correctas». Lo promovieron sin dudar.",
+    "p2": "Seis meses después, el equipo estaba en crisis. No por falta de conocimiento técnico — eso le sobraba. Falló en lo que ningún test detectó: bajo presión decidía solo, ignoraba a su gente, rompía los acuerdos que él mismo proponía. La rotación se disparó. Llegaron las licencias, los reclamos, el conflicto. Lo que el currículum nunca dijo, lo pagó la organización entera.",
+    "lead": "No es un caso aislado. Es un patrón documentado:",
+    "stat1Value": "3×",
+    "stat1Desc": "Una mala contratación cuesta hasta tres veces el salario anual del cargo.",
+    "stat2Value": "70%",
+    "stat2Desc": "de los trabajadores en Chile declara haber sufrido acoso laboral; muchas veces el origen es un mal liderazgo.",
+    "stat3Value": "Mortalidad",
+    "stat3Desc": "En salud, la capacidad de gestión de quien dirige impacta directamente los resultados clínicos.",
+    "timelineStart": "Mes 0 — Contratación",
+    "timelineEnd": "Mes 6 — Crisis del equipo",
+    "close": "Las organizaciones toman sus decisiones más caras con su evidencia más débil."
+  },
+  "dice": {
+    "kicker": "El problema",
+    "title": "El autorreporte miente. La conducta no.",
+    "body": "Lo que una persona declara no predice lo que hará frente a un dilema real, con información incompleta, presión y tiempo límite. En papel o en un chatbot, el autorreporte premia a quien responde «bonito», no a quien actúa bien.",
+    "colSays": "Dice",
+    "colDoes": "COMPASS ve que hace",
+    "drag": "Arrastra para revelar",
+    "rows": [
+      { "says": "«Soy un líder colaborativo»", "does": "Decidió en 2s. Consultó a 0 de 9." },
+      { "says": "«Cumplo mis compromisos»", "does": "Prometió 4. Cumplió 1." },
+      { "says": "«Priorizo a mi equipo»", "does": "Visitó al de mayor cargo. Ignoró al sobrecargado." },
+      { "says": "«Decido con datos»", "does": "No abrió ningún documento antes de elegir." }
+    ]
+  },
+  "platform": {
+    "kicker": "La plataforma",
+    "title": "Una plataforma. Un motor. Infinitas aplicaciones.",
+    "body": "COMPASS — Competency & Profiling Simulation System — mide competencias socioemocionales con una arquitectura modular: separa el <strong>núcleo</strong> (captura conductual, analítica e IA) de la <strong>narrativa</strong> (los escenarios de cada dominio). Eso permite crear una versión para cualquier sector sin reinventar la tecnología.",
+    "coreLabel": "Motor",
+    "coreSub": "Núcleo COMPASS",
+    "rings": [
+      { "name": "Captura", "desc": "Registro conductual en tiempo real, sin autorreporte." },
+      { "name": "Analítica", "desc": "Indicadores comparables por competencia." },
+      { "name": "Machine Learning", "desc": "Perfiles construidos desde la conducta." },
+      { "name": "Trazabilidad", "desc": "Cada métrica vuelve a la acción que la generó." }
+    ],
+    "branchLabel": "Versiones por dominio",
+    "branches": ["Salud", "Selección", "Educación", "Sector Público", "Corporativo"]
+  },
+  "solutions": {
+    "kicker": "Soluciones",
+    "title": "Un mismo motor, dos formas de generar valor.",
+    "assessTag": "Evaluar / Seleccionar",
+    "assessTitle": "Decisiones de talento con evidencia, no con corazonadas.",
+    "assessBody": "Para selección, promoción interna y diagnóstico de equipos. COMPASS perfila cómo una persona prioriza, resuelve conflictos, cumple compromisos y decide bajo presión, y entrega reportes comparables y objetivos. Reemplaza assessment centers caros y encuestas manipulables.",
+    "assessFoot": "Ideal para: RRHH, consultoras de selección, instituciones con cargos críticos.",
+    "trainTag": "Entrenar / Capacitar",
+    "trainTitle": "Un gimnasio seguro para practicar decisiones difíciles.",
+    "trainBody": "Para formación y certificación de competencias. Las personas enfrentan dilemas reales —conflictos de equipo, ética, seguridad, gestión— en un entorno donde las malas decisiones no tienen consecuencias reales, pero sí retroalimentación. Aprenden haciendo, no leyendo.",
+    "trainFoot": "Ideal para: capacitación ejecutiva, microcredenciales, formación profesional."
+  },
+  "democratize": {
+    "kicker": "Impacto",
+    "title": "Formación de élite, al alcance de todos.",
+    "body": "Entrenar liderazgo y juicio profesional exigía mentores, assessment centers y jornadas presenciales: caro, lento, para unos pocos. COMPASS lo vuelve digital, remoto y replicable. Un estudiante en una región apartada o una organización sin presupuesto para grandes consultoras accede a la misma experiencia de práctica y evaluación rigurosa. Bajamos la barrera a competencias que antes eran un privilegio.",
+    "f1": "Remoto",
+    "f2": "Escalable",
+    "f3": "Mismo rigor para todos",
+    "counterFrom": "1 evaluador",
+    "counterTo": "∞ participantes"
+  },
+  "how": {
+    "kicker": "Cómo funciona",
+    "title": "Capturamos lo que otros no ven.",
+    "body": "Mientras la persona juega, COMPASS registra tres niveles:",
+    "l1Tag": "Nivel 1 — Explícito",
+    "l1Title": "Lo que elige.",
+    "l1Desc": "Cada decisión frente a los escenarios, etiquetada por competencia.",
+    "l2Tag": "Nivel 2 — Implícito",
+    "l2Title": "Lo que realmente hace.",
+    "l2Desc": "Si asiste a la reunión que dijo priorizar, cómo reparte recursos, si respeta lo que prometió. Sin saber que se mide.",
+    "l3Tag": "Nivel 3 — De proceso",
+    "l3Title": "Cómo lo hace.",
+    "l3Desc": "Tiempos de decisión, dudas (hover), secuencias de navegación, uso de información.",
+    "aiLabel": "Perfil conductual",
+    "aiSub": "Machine Learning",
+    "close": "Algoritmos de <strong>machine learning</strong> integran los tres niveles y construyen perfiles conductuales: consistencia entre promesa y acción, equidad de atención, juicio bajo presión."
+  },
+  "versions": {
+    "kicker": "Versiones",
+    "title": "De un motor, muchas versiones.",
+    "available": "Disponible",
+    "soon": "Próximamente",
+    "activeName": "COMPASS: Gestión en Salud",
+    "activeDesc": "Mide y entrena liderazgo y decisión en directivos clínicos, donde una buena gestión salva vidas y recursos.",
+    "activeCta": "Ver caso",
+    "upcoming": [
+      { "name": "Selección de Talento", "desc": "Perfilamiento conductual para procesos de selección y promoción." },
+      { "name": "Educación Superior", "desc": "Práctica y evaluación de competencias en formación profesional." },
+      { "name": "Sector Público", "desc": "Decisión y servicio bajo presión en contextos públicos." },
+      { "name": "Liderazgo Corporativo", "desc": "Desarrollo de liderazgo y gestión de equipos." }
+    ],
+    "customName": "A tu medida",
+    "customDesc": "Un escenario diseñado para las competencias críticas de tu organización.",
+    "customCta": "Hablemos"
+  },
+  "savings": {
+    "kicker": "Retorno",
+    "title": "Tu evaluación más cara, hecha mejor y más barata.",
+    "b1Value": "3× / 88%",
+    "b1Title": "Evita el costo oculto.",
+    "b1Desc": "Una mala contratación cuesta hasta 3× el salario anual; el 88% de quienes evalúan por competencias reduce sus malas contrataciones.",
+    "b2Value": "10–25% · 4–16 sem",
+    "b2Title": "Reemplaza procesos lentos.",
+    "b2Desc": "Un assessment center cuesta 10–25% del salario anual y toma 4 a 16 semanas. COMPASS: una sesión digital, simultánea.",
+    "b3Value": "5 → 500",
+    "b3Title": "Escala sin perder rigor.",
+    "b3Desc": "Mismo estándar para 5 o 500, remoto, resultados comparables.",
+    "barTraditional": "Costo tradicional",
+    "barCompass": "COMPASS"
+  },
+  "future": {
+    "kicker": "El futuro",
+    "title": "El mundo pasó de «qué título tienes» a «qué sabes hacer».",
+    "bullets": [
+      { "value": "94%", "text": "de empleadores en Latinoamérica ya contrata por habilidades — el más alto del mundo." },
+      { "value": "+23,7% anual", "text": "Serious games hacia USD 16.700M (2026), con retención de aprendizaje sobre 90%." },
+      { "value": "IA", "text": "rompió el reclutamiento: CVs inflados, filtros manipulables, cajas negras. El autorreporte digital hereda los sesgos del de papel." }
+    ],
+    "close": "El mercado pide evidencia conductual real. COMPASS no mejora el test: lo reemplaza."
+  },
+  "about": {
+    "kicker": "Nosotros",
+    "title": "Ciencia de frontera, no humo.",
+    "body": "COMPASS nace de la investigación del <strong>Human-Computer Interaction Lab (HCI Lab)</strong> y del <strong>GIIA</strong> de la <strong>Universidad de Concepción</strong>, integrando interacción humano-computador, inteligencia artificial, psicología y ciencias cognitivas. Sus indicadores se validan contra instrumentos de referencia internacionales (p. ej. MLQ-5X para liderazgo).",
+    "logosLabel": "Respaldo institucional",
+    "logos": ["Universidad de Concepción", "HCI Lab", "GIIA", "ANID · VIU"]
+  },
+  "cta": {
+    "title": "Deja de adivinar quién es buen líder. Míralo.",
+    "sub": "Agenda una demo y te mostramos cómo COMPASS mide lo que tu equipo realmente hace.",
+    "name": "Nombre",
+    "org": "Organización",
+    "email": "Correo",
+    "interest": "Interés",
+    "interestAssess": "Evaluar",
+    "interestTrain": "Entrenar",
+    "interestBoth": "Ambos",
+    "interestPlaceholder": "Selecciona una opción",
+    "message": "Mensaje",
+    "send": "Enviar",
+    "sending": "Enviando…",
+    "success": "¡Gracias! Te contactaremos pronto.",
+    "error": "Algo falló. Escríbenos directamente a ",
+    "required": "Campo obligatorio"
+  },
+  "footer": {
+    "tagline": "Mide lo que hacen.",
+    "rights": "Universidad de Concepción · HCI Lab · GIIA",
+    "navLabel": "Navegación",
+    "contactLabel": "Contacto",
+    "madeBy": "Nace de la investigación del HCI Lab y GIIA, Universidad de Concepción."
+  }
+}

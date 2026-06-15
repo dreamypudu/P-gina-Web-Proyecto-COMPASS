@@ -1,0 +1,21 @@
+---
+import { useTranslations, alternatePath, type Lang } from '../i18n/utils';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const other: Lang = lang === 'es' ? 'en' : 'es';
+const href = alternatePath(lang);
+---
+<a
+  href={href}
+  data-lang-switch={other}
+  class="navlink inline-flex items-center gap-1.5 rounded-full border border-white/15 px-3 py-1.5 text-sm font-semibold text-ink-dim transition-colors hover:text-white hover:border-cyan/50"
+  aria-label={t('lang.label')}
+  hreflang={other}
+>
+  <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+    <circle cx="12" cy="12" r="9" />
+    <path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18" />
+  </svg>
+  <span><span class="text-white">{lang.toUpperCase()}</span> / {other.toUpperCase()}</span>
+</a>

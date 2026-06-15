@@ -1,0 +1,197 @@
+{
+  "meta": {
+    "title": "COMPASS — Measure competencies by behavior, not self-report",
+    "description": "COMPASS is the simulation platform that assesses and trains socio-emotional competencies by observing how people actually behave under pressure — not their self-report.",
+    "ogAlt": "COMPASS — Competency & Profiling Simulation System"
+  },
+  "lang": {
+    "switchTo": "Español",
+    "current": "English",
+    "label": "Change language"
+  },
+  "nav": {
+    "platform": "Platform",
+    "solutions": "Solutions",
+    "how": "How it works",
+    "versions": "Versions",
+    "about": "About",
+    "contact": "Contact",
+    "demo": "Request a demo",
+    "menu": "Menu",
+    "close": "Close",
+    "home": "Home"
+  },
+  "hero": {
+    "badge": "Behavioral psychometrics · not self-report",
+    "titleLead": "Measure what they",
+    "titleDo": "do",
+    "titleMid": ", not what they",
+    "titleSay": "say",
+    "titleTail": ".",
+    "sub": "COMPASS is the simulation platform that <strong>assesses and trains</strong> socio-emotional competencies by observing how people <strong>actually behave</strong> under pressure — not their self-report.",
+    "ctaPrimary": "Request a demo",
+    "ctaSecondary": "See how it works",
+    "mockupCaption": "Simulator view — COMPASS: Healthcare Management",
+    "mockupPlaceholder": "Simulator screenshot / GIF",
+    "scroll": "Scroll"
+  },
+  "story": {
+    "kicker": "The cost of getting it wrong",
+    "title": "The perfect interview. The wrong decision.",
+    "p1": "On paper, flawless: polished résumé, brilliant interview, a personality test with every “right” answer. They promoted him without hesitation.",
+    "p2": "Six months later, the team was in crisis. Not for lack of technical knowledge — he had plenty. He failed at what no test caught: under pressure he decided alone, ignored his people, broke the very agreements he proposed. Turnover spiked. Sick leave, complaints, conflict followed. What the résumé never revealed, the whole organization paid for.",
+    "lead": "Not an isolated case. A documented pattern:",
+    "stat1Value": "3×",
+    "stat1Desc": "A bad hire costs up to three times the role's annual salary.",
+    "stat2Value": "70%",
+    "stat2Desc": "of workers in Chile report having suffered workplace harassment; poor leadership is often the root.",
+    "stat3Value": "Mortality",
+    "stat3Desc": "In healthcare, a manager's leadership ability directly affects clinical outcomes.",
+    "timelineStart": "Month 0 — Hire",
+    "timelineEnd": "Month 6 — Team crisis",
+    "close": "Organizations make their most expensive decisions with their weakest evidence."
+  },
+  "dice": {
+    "kicker": "The problem",
+    "title": "Self-report lies. Behavior doesn't.",
+    "body": "What people declare doesn't predict what they'll do facing a real dilemma — incomplete information, pressure, a ticking clock. On paper or via a chatbot, self-report rewards those who answer “nicely,” not those who act well.",
+    "colSays": "Says",
+    "colDoes": "COMPASS sees them do",
+    "drag": "Drag to reveal",
+    "rows": [
+      { "says": "“I'm a collaborative leader”", "does": "Decided in 2s. Consulted 0 of 9." },
+      { "says": "“I keep my commitments”", "does": "Promised 4. Kept 1." },
+      { "says": "“I prioritize my team”", "does": "Visited the most senior. Ignored the overloaded one." },
+      { "says": "“I decide with data”", "does": "Opened no document before choosing." }
+    ]
+  },
+  "platform": {
+    "kicker": "The platform",
+    "title": "One platform. One engine. Endless applications.",
+    "body": "COMPASS — Competency & Profiling Simulation System — measures socio-emotional competencies through a modular architecture: it separates the <strong>core</strong> (behavioral capture, analytics and AI) from the <strong>narrative</strong> (each domain's scenarios). That lets us build a version for any sector without reinventing the technology.",
+    "coreLabel": "Engine",
+    "coreSub": "COMPASS core",
+    "rings": [
+      { "name": "Capture", "desc": "Real-time behavioral logging, no self-report." },
+      { "name": "Analytics", "desc": "Comparable indicators per competency." },
+      { "name": "Machine Learning", "desc": "Profiles built from behavior." },
+      { "name": "Traceability", "desc": "Every metric traces back to the action that produced it." }
+    ],
+    "branchLabel": "Versions by domain",
+    "branches": ["Healthcare", "Selection", "Education", "Public Sector", "Corporate"]
+  },
+  "solutions": {
+    "kicker": "Solutions",
+    "title": "One engine, two ways to create value.",
+    "assessTag": "Assess / Select",
+    "assessTitle": "Talent decisions backed by evidence, not gut feeling.",
+    "assessBody": "For selection, internal promotion and team diagnostics. COMPASS profiles how a person prioritizes, resolves conflict, keeps commitments and decides under pressure, delivering objective, comparable reports. It replaces costly assessment centers and gameable surveys.",
+    "assessFoot": "Ideal for: HR, selection consultancies, organizations with critical roles.",
+    "trainTag": "Train / Upskill",
+    "trainTitle": "A safe gym to practice hard decisions.",
+    "trainBody": "For competency training and certification. People face real dilemmas —team conflict, ethics, safety, management— in an environment where bad decisions carry no real consequences, only feedback. They learn by doing, not by reading.",
+    "trainFoot": "Ideal for: executive training, micro-credentials, professional education."
+  },
+  "democratize": {
+    "kicker": "Impact",
+    "title": "Elite training, within everyone's reach.",
+    "body": "Training leadership and professional judgment used to require mentors, assessment centers and in-person sessions: expensive, slow, for a few. COMPASS makes it digital, remote and replicable. A student in a remote region or an organization without big-consultancy budgets gets the same rigorous practice and assessment. We lower the barrier to competencies that used to be a privilege.",
+    "f1": "Remote",
+    "f2": "Scalable",
+    "f3": "Same rigor for everyone",
+    "counterFrom": "1 evaluator",
+    "counterTo": "∞ participants"
+  },
+  "how": {
+    "kicker": "How it works",
+    "title": "We capture what others can't see.",
+    "body": "While the person plays, COMPASS records three levels:",
+    "l1Tag": "Level 1 — Explicit",
+    "l1Title": "What they choose.",
+    "l1Desc": "Every decision in the scenarios, tagged by competency.",
+    "l2Tag": "Level 2 — Implicit",
+    "l2Title": "What they actually do.",
+    "l2Desc": "Whether they attend the meeting they said was a priority, how they allocate resources, whether they honor what they promised. Without knowing they're being measured.",
+    "l3Tag": "Level 3 — Process",
+    "l3Title": "How they do it.",
+    "l3Desc": "Decision times, hesitation (hover), navigation sequences, use of information.",
+    "aiLabel": "Behavioral profile",
+    "aiSub": "Machine Learning",
+    "close": "<strong>Machine learning</strong> integrates the three levels into behavioral profiles: promise-vs-action consistency, fairness of attention, judgment under pressure."
+  },
+  "versions": {
+    "kicker": "Versions",
+    "title": "From one engine, many versions.",
+    "available": "Available",
+    "soon": "Coming soon",
+    "activeName": "COMPASS: Healthcare Management",
+    "activeDesc": "Measures and trains leadership and decision-making in clinical managers, where good management saves lives and resources.",
+    "activeCta": "View case",
+    "upcoming": [
+      { "name": "Talent Selection", "desc": "Behavioral profiling for selection and promotion processes." },
+      { "name": "Higher Education", "desc": "Practice and assessment of competencies in professional training." },
+      { "name": "Public Sector", "desc": "Decision-making and service under pressure in public contexts." },
+      { "name": "Corporate Leadership", "desc": "Leadership development and team management." }
+    ],
+    "customName": "Custom",
+    "customDesc": "A scenario built for your organization's critical competencies.",
+    "customCta": "Let's talk"
+  },
+  "savings": {
+    "kicker": "ROI",
+    "title": "Your most expensive evaluation — done better and cheaper.",
+    "b1Value": "3× / 88%",
+    "b1Title": "Avoid the hidden cost.",
+    "b1Desc": "A bad hire costs up to 3× the annual salary; 88% of organizations evaluating by competency reduce bad hires.",
+    "b2Value": "10–25% · 4–16 wks",
+    "b2Title": "Replace slow processes.",
+    "b2Desc": "An assessment center costs 10–25% of the annual salary and takes 4 to 16 weeks. COMPASS: one digital, simultaneous session.",
+    "b3Value": "5 → 500",
+    "b3Title": "Scale without losing rigor.",
+    "b3Desc": "Same standard for 5 or 500, remote, comparable results.",
+    "barTraditional": "Traditional cost",
+    "barCompass": "COMPASS"
+  },
+  "future": {
+    "kicker": "The future",
+    "title": "The world shifted from “what's your degree” to “what can you do”.",
+    "bullets": [
+      { "value": "94%", "text": "of employers in Latin America already hire by skills — the highest rate in the world." },
+      { "value": "+23.7% / yr", "text": "Serious games toward USD 16.7B (2026), with learning retention above 90%." },
+      { "value": "AI", "text": "broke recruitment: inflated résumés, gameable filters, black boxes. Digital self-report inherits the same biases as paper." }
+    ],
+    "close": "The market demands real behavioral evidence. COMPASS doesn't improve the test — it replaces it."
+  },
+  "about": {
+    "kicker": "About",
+    "title": "Frontier science, not hype.",
+    "body": "COMPASS was born from research at the <strong>Human-Computer Interaction Lab (HCI Lab)</strong> and <strong>GIIA</strong> at <strong>Universidad de Concepción</strong>, blending human-computer interaction, artificial intelligence, psychology and cognitive science. Its indicators are validated against international reference instruments (e.g., MLQ-5X for leadership).",
+    "logosLabel": "Institutional backing",
+    "logos": ["Universidad de Concepción", "HCI Lab", "GIIA", "ANID · VIU"]
+  },
+  "cta": {
+    "title": "Stop guessing who's a good leader. See it.",
+    "sub": "Book a demo and we'll show you how COMPASS measures what your team actually does.",
+    "name": "Name",
+    "org": "Organization",
+    "email": "Email",
+    "interest": "Interest",
+    "interestAssess": "Assess",
+    "interestTrain": "Train",
+    "interestBoth": "Both",
+    "interestPlaceholder": "Select an option",
+    "message": "Message",
+    "send": "Send",
+    "sending": "Sending…",
+    "success": "Thank you! We'll be in touch soon.",
+    "error": "Something went wrong. Write to us directly at ",
+    "required": "Required field"
+  },
+  "footer": {
+    "tagline": "Measure what they do.",
+    "rights": "Universidad de Concepción · HCI Lab · GIIA",
+    "navLabel": "Navigation",
+    "contactLabel": "Contact",
+    "madeBy": "Born from research at HCI Lab and GIIA, Universidad de Concepción."
+  }
+}

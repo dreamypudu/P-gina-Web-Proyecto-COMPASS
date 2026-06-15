@@ -1,0 +1,69 @@
+---
+import { useTranslations, type Lang } from '../i18n/utils';
+
+interface Props { lang: Lang }
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const blocks = [
+  { value: t('savings.b1Value'), title: t('savings.b1Title'), desc: t('savings.b1Desc') },
+  { value: t('savings.b2Value'), title: t('savings.b2Title'), desc: t('savings.b2Desc') },
+  { value: t('savings.b3Value'), title: t('savings.b3Title'), desc: t('savings.b3Desc') },
+];
+---
+<section id="ahorro" class="relative py-24 lg:py-32">
+  <div class="absolute inset-x-0 top-1/2 h-px bg-gradient-to-r from-transparent via-cyan/25 to-transparent" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-7xl px-5 lg:px-8">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="kicker justify-center" data-reveal>{t('savings.kicker')}</p>
+      <h2 class="mt-5 text-3xl sm:text-4xl lg:text-5xl" data-reveal style="--reveal-delay:80ms">{t('savings.title')}</h2>
+    </div>
+
+    <div class="mt-14 grid gap-6 lg:grid-cols-3">
+      {blocks.map((block, i) => (
+        <article class="card lift p-7" data-reveal style={`--reveal-delay:${i * 110}ms`}>
+          <p class="text-4xl font-extrabold text-gradient">{block.value}</p>
+          <h3 class="mt-5 text-2xl">{block.title}</h3>
+          <p class="mt-3 leading-relaxed text-ink-dim">{block.desc}</p>
+        </article>
+      ))}
+    </div>
+
+    <div class="card mx-auto mt-12 max-w-3xl p-6" data-reveal>
+      <div class="space-y-5">
+        <div>
+          <div class="mb-2 flex justify-between text-sm font-semibold text-ink-dim">
+            <span>{t('savings.barTraditional')}</span>
+            <span>100%</span>
+          </div>
+          <div class="h-3 overflow-hidden rounded-full bg-white/10">
+            <div class="cost-bar traditional h-full rounded-full bg-sector-red"></div>
+          </div>
+        </div>
+        <div>
+          <div class="mb-2 flex justify-between text-sm font-semibold text-ink-dim">
+            <span>{t('savings.barCompass')}</span>
+            <span>digital</span>
+          </div>
+          <div class="h-3 overflow-hidden rounded-full bg-white/10">
+            <div class="cost-bar compass h-full rounded-full bg-cyan"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cost-bar {
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 1s ease-out;
+  }
+  [data-reveal].is-visible .cost-bar.traditional { transform: scaleX(1); }
+  [data-reveal].is-visible .cost-bar.compass { transform: scaleX(0.34); transition-delay: 0.25s; }
+  @media (prefers-reduced-motion: reduce) {
+    .cost-bar.traditional { transform: scaleX(1); }
+    .cost-bar.compass { transform: scaleX(0.34); }
+  }
+</style>

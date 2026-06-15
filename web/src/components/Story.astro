@@ -1,0 +1,56 @@
+---
+import { useTranslations, type Lang } from '../i18n/utils';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const stats = [
+  { v: t('story.stat1Value'), d: t('story.stat1Desc'), count: 3, suffix: '×' },
+  { v: t('story.stat2Value'), d: t('story.stat2Desc'), count: 70, suffix: '%' },
+  { v: t('story.stat3Value'), d: t('story.stat3Desc'), count: null, suffix: '' },
+];
+---
+<section id="historia" class="relative py-24 lg:py-32">
+  <div class="mx-auto max-w-3xl px-5 text-center lg:px-8">
+    <p class="kicker justify-center" data-reveal>{t('story.kicker')}</p>
+    <h2 class="mt-5 text-3xl sm:text-4xl lg:text-5xl" data-reveal style="--reveal-delay:80ms">{t('story.title')}</h2>
+    <p class="mt-7 text-lg leading-relaxed text-ink-dim" data-reveal style="--reveal-delay:140ms">{t('story.p1')}</p>
+    <p class="mt-5 text-lg leading-relaxed text-ink-dim" data-reveal style="--reveal-delay:200ms">{t('story.p2')}</p>
+
+    <!-- timeline -->
+    <div class="mx-auto mt-10 max-w-md" data-reveal style="--reveal-delay:260ms">
+      <div class="flex items-center justify-between text-xs font-medium">
+        <span class="text-emerald-400">{t('story.timelineStart')}</span>
+        <span class="text-sector-red">{t('story.timelineEnd')}</span>
+      </div>
+      <div class="relative mt-2 h-1.5 overflow-hidden rounded-full bg-white/10">
+        <div class="timeline-fill absolute inset-y-0 left-0 w-full origin-left rounded-full bg-gradient-to-r from-emerald-400 via-sector-yellow to-sector-red"></div>
+      </div>
+    </div>
+
+    <p class="mt-12 text-sm font-semibold uppercase text-ink" data-reveal>{t('story.lead')}</p>
+  </div>
+
+  <!-- stat cards -->
+  <div class="mx-auto mt-8 grid max-w-5xl gap-6 px-5 sm:grid-cols-3 lg:px-8">
+    {stats.map((s, i) => (
+      <div class="card lift p-7 text-center" data-reveal style={`--reveal-delay:${i * 120}ms`}>
+        <div class="text-5xl font-extrabold text-gradient">
+          {s.count !== null
+            ? <span data-count={String(s.count)} data-suffix={s.suffix}>0{s.suffix}</span>
+            : <span>{s.v}</span>}
+        </div>
+        <p class="mt-4 text-sm leading-relaxed text-ink-dim">{s.d}</p>
+      </div>
+    ))}
+  </div>
+
+  <p class="mx-auto mt-14 max-w-2xl px-5 text-center text-xl font-semibold italic text-white lg:px-8" data-reveal>
+    “{t('story.close')}”
+  </p>
+</section>
+
+<style>
+  .timeline-fill { transform: scaleX(0); transition: transform 1.4s ease-out; }
+  [data-reveal].is-visible .timeline-fill { transform: scaleX(1); }
+  @media (prefers-reduced-motion: reduce) { .timeline-fill { transform: scaleX(1); } }
+</style>

@@ -1,0 +1,60 @@
+---
+import { useTranslations, type Lang } from '../i18n/utils';
+
+interface Props { lang: Lang }
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const bullets = t<{ value: string; text: string }[]>('future.bullets');
+---
+<section id="futuro" class="relative overflow-hidden py-24 lg:py-32">
+  <div class="absolute inset-0 bg-aura opacity-60" aria-hidden="true"></div>
+  <div class="relative mx-auto grid max-w-7xl gap-14 px-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:px-8">
+    <div>
+      <p class="kicker" data-reveal>{t('future.kicker')}</p>
+      <h2 class="mt-5 text-3xl sm:text-4xl lg:text-5xl" data-reveal style="--reveal-delay:80ms">{t('future.title')}</h2>
+      <p class="mt-7 text-xl font-semibold text-white" data-reveal style="--reveal-delay:140ms">{t('future.close')}</p>
+    </div>
+
+    <div class="relative" data-reveal style="--reveal-delay:160ms">
+      <svg class="trend absolute inset-0 h-full w-full" viewBox="0 0 500 300" aria-hidden="true">
+        <path class="trend-grid" d="M30 250H470M30 190H470M30 130H470M30 70H470" />
+        <path class="trend-line" d="M35 245 C110 230 145 190 210 175 C285 155 315 95 375 82 C425 70 448 54 470 35" />
+      </svg>
+      <div class="relative grid gap-5">
+        {bullets.map((item, i) => (
+          <article class="card lift ml-auto w-full max-w-xl p-6" data-reveal style={`--reveal-delay:${i * 120}ms`}>
+            <div class="flex gap-5">
+              <p class="min-w-24 text-3xl font-extrabold text-gradient">{item.value}</p>
+              <p class="leading-relaxed text-ink-dim">{item.text}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .trend {
+    opacity: 0.35;
+    transform: translateY(20px);
+  }
+  .trend-grid {
+    stroke: rgb(255 255 255 / 0.12);
+    stroke-width: 1;
+  }
+  .trend-line {
+    fill: none;
+    stroke: var(--color-cyan);
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-dasharray: 700;
+    stroke-dashoffset: 700;
+    transition: stroke-dashoffset 1.4s ease-out;
+  }
+  [data-reveal].is-visible .trend-line { stroke-dashoffset: 0; }
+  @media (prefers-reduced-motion: reduce) {
+    .trend-line { stroke-dashoffset: 0; }
+  }
+</style>

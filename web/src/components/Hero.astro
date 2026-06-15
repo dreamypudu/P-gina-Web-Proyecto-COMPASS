@@ -1,0 +1,144 @@
+---
+import { useTranslations, type Lang } from '../i18n/utils';
+import AnimatedLogo from './AnimatedLogo.astro';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+<section id="inicio" class="relative overflow-hidden pt-32 pb-20 lg:pt-40 lg:pb-28">
+  <!-- backdrop -->
+  <div class="pointer-events-none absolute inset-0 bg-dots opacity-60" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute inset-0 bg-aura" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute -top-24 left-1/2 h-[480px] w-[480px] -translate-x-1/2 rounded-full bg-cyan/10 blur-[120px]" data-parallax="0.05" aria-hidden="true"></div>
+
+  <div class="relative mx-auto grid max-w-7xl items-center gap-14 px-5 lg:grid-cols-2 lg:px-8">
+    <!-- copy -->
+    <div>
+      <div class="mb-7 max-w-[230px] sm:max-w-[280px]" data-reveal>
+        <AnimatedLogo />
+      </div>
+
+      <p class="kicker mb-5" data-reveal style="--reveal-delay:80ms">{t('hero.badge')}</p>
+
+      <h1 class="text-4xl sm:text-5xl xl:text-6xl" data-reveal style="--reveal-delay:140ms">
+        {t('hero.titleLead')}{' '}
+        <span class="text-gradient whitespace-nowrap" data-typewriter data-word={t('hero.titleDo')}>{t('hero.titleDo')}</span>{t('hero.titleMid')}{' '}
+        <span class="strike whitespace-nowrap" data-strike>{t('hero.titleSay')}</span>{t('hero.titleTail')}
+      </h1>
+
+      <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink-dim" data-reveal style="--reveal-delay:220ms" set:html={t('hero.sub')} />
+
+      <div class="mt-9 flex flex-wrap items-center gap-4" data-reveal style="--reveal-delay:300ms">
+        <a href="#contacto" class="group inline-flex items-center gap-2 rounded-full bg-cyan px-6 py-3.5 font-bold text-base-2 shadow-xl shadow-cyan/25 transition hover:bg-white hover:shadow-cyan/40">
+          {t('hero.ctaPrimary')}
+          <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#como-funciona" class="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3.5 font-semibold text-white transition hover:border-cyan/50 hover:bg-white/5">
+          {t('hero.ctaSecondary')}
+        </a>
+      </div>
+    </div>
+
+    <!-- mockup -->
+    <div class="relative" data-reveal style="--reveal-delay:240ms">
+      <div class="floaty">
+        <div class="card overflow-hidden glow" data-parallax="-0.03">
+          <!-- browser chrome -->
+          <div class="flex items-center gap-2 border-b border-white/10 bg-base/60 px-4 py-3">
+            <span class="h-3 w-3 rounded-full bg-sector-red/80"></span>
+            <span class="h-3 w-3 rounded-full bg-sector-yellow/80"></span>
+            <span class="h-3 w-3 rounded-full bg-emerald-400/80"></span>
+            <span class="ml-3 truncate rounded-md bg-white/5 px-3 py-1 text-xs text-ink-dim">compass.giia.udec.cl · sim</span>
+          </div>
+          <!-- mock simulator panel -->
+          <div class="relative aspect-[4/3] bg-gradient-to-br from-surface to-base p-5">
+            <div class="absolute inset-0 bg-dots opacity-40" aria-hidden="true"></div>
+            <div class="relative flex h-full flex-col justify-between">
+              <div class="flex items-center justify-between text-xs text-ink-dim">
+                <span>{t('hero.mockupCaption')}</span>
+                <span class="telemetry inline-flex items-center gap-1.5 text-cyan"><span class="h-1.5 w-1.5 rounded-full bg-cyan"></span> REC</span>
+              </div>
+              <div class="grid gap-2.5">
+                <div class="flex items-center justify-between rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2.5 text-sm">
+                  <span class="text-ink">Consistencia promesa–acción</span>
+                  <span class="font-mono font-bold text-cyan" data-count="62" data-suffix="%">62%</span>
+                </div>
+                <div class="flex items-center justify-between rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2.5 text-sm">
+                  <span class="text-ink">Equidad de atención</span>
+                  <span class="font-mono font-bold text-indigo" data-count="48" data-suffix="%">48%</span>
+                </div>
+                <div class="flex items-center justify-between rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2.5 text-sm">
+                  <span class="text-ink">Juicio bajo presión</span>
+                  <span class="font-mono font-bold text-cyan-soft" data-count="77" data-suffix="%">77%</span>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 text-[11px] text-ink-dim/80">
+                <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2v20M2 12h20" stroke-linecap="round"/></svg>
+                {t('hero.mockupPlaceholder')}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- floating chips -->
+      <div class="absolute -left-4 top-1/4 hidden rounded-xl border border-white/10 bg-base-2/90 px-3 py-2 text-xs font-medium text-ink shadow-xl backdrop-blur sm:block floaty" style="animation-delay:1.2s" aria-hidden="true">
+        ⏱ 2.1s <span class="text-ink-dim">decisión</span>
+      </div>
+      <div class="absolute -right-3 bottom-10 hidden rounded-xl border border-cyan/30 bg-base-2/90 px-3 py-2 text-xs font-medium text-cyan shadow-xl backdrop-blur sm:block floaty" style="animation-delay:0.6s" aria-hidden="true">
+        ● 0/9 <span class="text-ink-dim">consultados</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .strike { position: relative; color: var(--color-ink-dim); }
+  .strike::after {
+    content: "";
+    position: absolute;
+    left: -2%;
+    top: 52%;
+    width: 104%;
+    height: 3px;
+    background: var(--color-sector-red);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease 0.9s;
+  }
+  .strike.is-struck::after { transform: scaleX(1); }
+
+  [data-typewriter] { border-right: 2px solid var(--color-cyan); }
+  [data-typewriter].done { border-right-color: transparent; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .strike::after { transition: none; transform: scaleX(1); }
+    [data-typewriter] { border-right-color: transparent; }
+  }
+</style>
+
+<script>
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const tw = document.querySelector<HTMLElement>('[data-typewriter]');
+  const strike = document.querySelector<HTMLElement>('[data-strike]');
+
+  if (tw && !reduce) {
+    const word = tw.dataset.word ?? tw.textContent ?? '';
+    tw.textContent = '';
+    let i = 0;
+    const tick = () => {
+      tw.textContent = word.slice(0, i);
+      i++;
+      if (i <= word.length) {
+        setTimeout(tick, 90);
+      } else {
+        tw.classList.add('done');
+        strike?.classList.add('is-struck');
+      }
+    };
+    setTimeout(tick, 700);
+  } else {
+    tw?.classList.add('done');
+    strike?.classList.add('is-struck');
+  }
+</script>

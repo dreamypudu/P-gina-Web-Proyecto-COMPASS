@@ -1,0 +1,102 @@
+---
+import { useTranslations, type Lang } from '../i18n/utils';
+
+interface Props { lang: Lang }
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const contactEmail = 'contacto@compass.giia.udec.cl';
+---
+<section id="contacto" class="relative overflow-hidden py-24 lg:py-32">
+  <div class="absolute inset-0 bg-dots opacity-35" aria-hidden="true"></div>
+  <div class="absolute inset-0 bg-gradient-to-br from-cyan/10 via-transparent to-indigo/15" aria-hidden="true"></div>
+
+  <div class="relative mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:px-8">
+    <div>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl" data-reveal>{t('cta.title')}</h2>
+      <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink-dim" data-reveal style="--reveal-delay:80ms">{t('cta.sub')}</p>
+    </div>
+
+    <form
+      class="card p-6 sm:p-8"
+      data-contact-form
+      data-email={contactEmail}
+      data-success={t('cta.success')}
+      data-reveal
+      style="--reveal-delay:120ms"
+    >
+      <div class="grid gap-5 sm:grid-cols-2">
+        <label class="field">
+          <span>{t('cta.name')}</span>
+          <input name={t('cta.name')} autocomplete="name" required />
+        </label>
+        <label class="field">
+          <span>{t('cta.org')}</span>
+          <input name={t('cta.org')} autocomplete="organization" required />
+        </label>
+        <label class="field sm:col-span-2">
+          <span>{t('cta.email')}</span>
+          <input name={t('cta.email')} type="email" autocomplete="email" required />
+        </label>
+        <label class="field sm:col-span-2">
+          <span>{t('cta.interest')}</span>
+          <select name={t('cta.interest')} required>
+            <option value="">{t('cta.interestPlaceholder')}</option>
+            <option>{t('cta.interestAssess')}</option>
+            <option>{t('cta.interestTrain')}</option>
+            <option>{t('cta.interestBoth')}</option>
+          </select>
+        </label>
+        <label class="field sm:col-span-2">
+          <span>{t('cta.message')}</span>
+          <textarea name={t('cta.message')} rows="5" required></textarea>
+        </label>
+      </div>
+
+      <div class="mt-6 flex flex-wrap items-center gap-4">
+        <button type="submit" class="inline-flex items-center gap-2 rounded-full bg-cyan px-6 py-3.5 font-bold text-base-2 shadow-xl shadow-cyan/25 transition hover:bg-white hover:shadow-cyan/40">
+          {t('cta.send')}
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <p class="text-sm font-semibold text-cyan" hidden data-form-status></p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<style>
+  .field {
+    display: grid;
+    gap: 0.5rem;
+  }
+  .field span {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: var(--color-ink-dim);
+  }
+  .field input,
+  .field select,
+  .field textarea {
+    width: 100%;
+    border-radius: 0.75rem;
+    border: 1px solid rgb(255 255 255 / 0.12);
+    background: rgb(7 11 20 / 0.72);
+    color: #fff;
+    padding: 0.9rem 1rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+  .field textarea { resize: vertical; min-height: 9rem; }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    border-color: color-mix(in srgb, var(--color-cyan) 65%, transparent);
+    box-shadow: 0 0 0 3px rgb(34 211 238 / 0.12);
+    background: rgb(7 11 20 / 0.9);
+  }
+  .field select option {
+    color: #0b1220;
+  }
+</style>

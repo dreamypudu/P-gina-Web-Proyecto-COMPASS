@@ -1,0 +1,69 @@
+---
+import { useTranslations, type Lang } from '../i18n/utils';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const features = [
+  { label: t('democratize.f1'), icon: 'remote' },
+  { label: t('democratize.f2'), icon: 'scale' },
+  { label: t('democratize.f3'), icon: 'rigor' },
+];
+// pseudo-random map grid (deterministic) of lit nodes
+const dots = Array.from({ length: 48 }, (_, i) => ((i * 7) % 11) < 4);
+---
+<section id="democratiza" class="relative overflow-hidden py-24 lg:py-32">
+  <div class="absolute inset-0 bg-gradient-to-b from-indigo/10 via-transparent to-cyan/5" aria-hidden="true"></div>
+  <div class="absolute inset-0 bg-dots opacity-30" aria-hidden="true"></div>
+
+  <div class="relative mx-auto max-w-4xl px-5 text-center lg:px-8">
+    <p class="kicker justify-center" data-reveal>{t('democratize.kicker')}</p>
+    <h2 class="mt-5 text-3xl sm:text-4xl lg:text-5xl" data-reveal style="--reveal-delay:80ms">{t('democratize.title')}</h2>
+    <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ink-dim" data-reveal style="--reveal-delay:140ms">{t('democratize.body')}</p>
+
+    <!-- lighting map -->
+    <div class="mx-auto mt-12 grid max-w-lg grid-cols-12 gap-2.5" data-reveal style="--reveal-delay:160ms" data-map>
+      {dots.map((lit, i) => (
+        <span class={`map-dot ${lit ? 'lit' : ''}`} style={`--d:${(i % 12) * 90 + Math.floor(i / 12) * 120}ms`}></span>
+      ))}
+    </div>
+
+    <!-- counter -->
+    <p class="mt-10 text-xl font-semibold" data-reveal>
+      <span class="text-white">{t('democratize.counterFrom')}</span>
+      <span class="mx-3 text-cyan">→</span>
+      <span class="text-gradient">{t('democratize.counterTo')}</span>
+    </p>
+
+    <!-- features -->
+    <div class="mx-auto mt-12 grid max-w-2xl gap-6 sm:grid-cols-3">
+      {features.map((f, i) => (
+        <div class="flex flex-col items-center gap-3" data-reveal style={`--reveal-delay:${i * 110}ms`}>
+          <span class="inline-flex h-12 w-12 items-center justify-center rounded-full border border-cyan/30 bg-cyan/5 text-cyan">
+            {f.icon === 'remote' && <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18" stroke-linecap="round"/></svg>}
+            {f.icon === 'scale' && <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 21V8M9 21V4M15 21v-9M21 21V11" stroke-linecap="round"/></svg>}
+            {f.icon === 'rigor' && <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>}
+          </span>
+          <span class="font-semibold text-white">{f.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .map-dot {
+    aspect-ratio: 1; border-radius: 9999px;
+    background: rgb(148 163 184 / 0.18);
+    transition: background 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+    transition-delay: var(--d);
+  }
+  .map-dot.lit { /* base state before reveal stays dim */ }
+  [data-reveal].is-visible .map-dot.lit {
+    background: var(--color-cyan);
+    box-shadow: 0 0 10px rgb(34 211 238 / 0.7);
+    transform: scale(1.1);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .map-dot { transition-delay: 0ms !important; }
+  }
+</style>

@@ -1,0 +1,104 @@
+---
+import { useTranslations, type Lang } from '../i18n/utils';
+
+interface Props { lang: Lang }
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const levels = [
+  { tag: t('how.l1Tag'), title: t('how.l1Title'), desc: t('how.l1Desc'), tone: 'cyan' },
+  { tag: t('how.l2Tag'), title: t('how.l2Title'), desc: t('how.l2Desc'), tone: 'indigo' },
+  { tag: t('how.l3Tag'), title: t('how.l3Title'), desc: t('how.l3Desc'), tone: 'cyan' },
+];
+---
+<section id="como-funciona" class="relative overflow-hidden py-24 lg:py-32">
+  <div class="absolute inset-0 bg-dots opacity-25" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-7xl px-5 lg:px-8">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="kicker justify-center" data-reveal>{t('how.kicker')}</p>
+      <h2 class="mt-5 text-3xl sm:text-4xl lg:text-5xl" data-reveal style="--reveal-delay:80ms">{t('how.title')}</h2>
+      <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ink-dim" data-reveal style="--reveal-delay:140ms">{t('how.body')}</p>
+    </div>
+
+    <div class="mt-14 grid gap-8 lg:grid-cols-[1fr_0.8fr] lg:items-center">
+      <div class="grid gap-5">
+        {levels.map((level, i) => (
+          <article class={`process-step card lift p-6 ${level.tone === 'indigo' ? 'is-indigo' : ''}`} data-reveal style={`--reveal-delay:${i * 110}ms`}>
+            <div class="flex items-start gap-4">
+              <div class="step-index grid h-11 w-11 shrink-0 place-items-center rounded-full border border-cyan/30 bg-cyan/10 font-mono text-sm font-bold text-cyan">
+                0{i + 1}
+              </div>
+              <div>
+                <p class="text-xs font-bold uppercase text-cyan">{level.tag}</p>
+                <h3 class="mt-2 text-2xl">{level.title}</h3>
+                <p class="mt-3 leading-relaxed text-ink-dim">{level.desc}</p>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="relative" data-reveal style="--reveal-delay:220ms">
+        <div class="ai-lines absolute inset-0" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="card glow relative overflow-hidden p-8 text-center">
+          <div class="absolute inset-0 bg-aura opacity-80" aria-hidden="true"></div>
+          <div class="relative mx-auto grid h-40 w-40 place-items-center rounded-full border border-indigo/40 bg-base-2">
+            <span class="pulse-ring absolute inset-0 rounded-full border border-indigo/40"></span>
+            <span class="pulse-ring absolute inset-0 rounded-full border border-cyan/30" style="animation-delay:1.2s"></span>
+            <div>
+              <p class="text-xs font-bold uppercase text-ink-dim">{t('how.aiSub')}</p>
+              <p class="mt-2 text-2xl font-extrabold text-gradient">{t('how.aiLabel')}</p>
+            </div>
+          </div>
+          <p class="relative mt-8 leading-relaxed text-ink-dim" set:html={t('how.close')} />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .process-step { position: relative; overflow: hidden; }
+  .process-step::after {
+    content: "";
+    position: absolute;
+    left: 2.7rem;
+    top: 5.2rem;
+    bottom: -1rem;
+    width: 1px;
+    background: linear-gradient(var(--color-cyan), transparent);
+    opacity: 0.35;
+  }
+  .process-step:last-child::after { display: none; }
+  .process-step.is-indigo .step-index {
+    border-color: color-mix(in srgb, var(--color-indigo) 45%, transparent);
+    background: color-mix(in srgb, var(--color-indigo) 12%, transparent);
+    color: var(--color-indigo);
+  }
+  .process-step.is-indigo p { color: var(--color-indigo); }
+  .ai-lines span {
+    position: absolute;
+    height: 1px;
+    width: 34%;
+    background: linear-gradient(90deg, transparent, var(--color-cyan), transparent);
+    opacity: 0;
+    transform: translateX(-30px);
+    animation: flowLine 2.6s ease-in-out infinite;
+  }
+  .ai-lines span:nth-child(1) { left: -12%; top: 20%; animation-delay: 0s; }
+  .ai-lines span:nth-child(2) { left: -8%; top: 36%; animation-delay: 0.25s; }
+  .ai-lines span:nth-child(3) { left: -15%; top: 52%; animation-delay: 0.5s; }
+  .ai-lines span:nth-child(4) { left: -10%; top: 68%; animation-delay: 0.75s; }
+  .ai-lines span:nth-child(5) { left: -14%; top: 84%; animation-delay: 1s; }
+  .ai-lines span:nth-child(6) { left: -6%; top: 10%; animation-delay: 1.25s; }
+  @keyframes flowLine {
+    0% { opacity: 0; transform: translateX(-30px); }
+    35% { opacity: 0.75; }
+    100% { opacity: 0; transform: translateX(260px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ai-lines span { animation: none; opacity: 0.4; transform: none; }
+  }
+</style>

@@ -1,0 +1,41 @@
+---
+import { useTranslations, type Lang } from '../i18n/utils';
+
+interface Props { lang: Lang }
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const logos = t<string[]>('about.logos');
+---
+<section id="nosotros" class="relative py-24 lg:py-32">
+  <div class="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:px-8">
+    <div>
+      <p class="kicker" data-reveal>{t('about.kicker')}</p>
+      <h2 class="mt-5 text-3xl sm:text-4xl lg:text-5xl" data-reveal style="--reveal-delay:80ms">{t('about.title')}</h2>
+      <p class="mt-6 text-lg leading-relaxed text-ink-dim" data-reveal style="--reveal-delay:140ms" set:html={t('about.body')} />
+    </div>
+
+    <div class="card p-7" data-reveal style="--reveal-delay:180ms">
+      <p class="text-xs font-bold uppercase text-cyan">{t('about.logosLabel')}</p>
+      <div class="mt-6 grid gap-4 sm:grid-cols-2">
+        {logos.map((logo, i) => (
+          <div class="logo-placeholder lift flex min-h-28 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center font-bold text-ink-dim" data-reveal style={`--reveal-delay:${i * 80}ms`}>
+            {logo}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .logo-placeholder {
+    transition: color 0.25s ease, border-color 0.25s ease, filter 0.25s ease, transform 0.25s ease;
+    filter: grayscale(1);
+  }
+  .logo-placeholder:hover {
+    color: #fff;
+    border-color: color-mix(in srgb, var(--color-cyan) 45%, transparent);
+    filter: grayscale(0);
+  }
+</style>

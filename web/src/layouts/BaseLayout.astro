@@ -1,0 +1,165 @@
+---
+import '../styles/global.css';
+import { localizePath, useTranslations, type Lang } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const site = Astro.site ?? new URL('https://compass.giia.udec.cl');
+const canonical = new URL(localizePath('/', lang), site).href;
+const esUrl = new URL('/', site).href;
+const enUrl = new URL('/en/', site).href;
+const ogImage = new URL('/assets/compass-fullname.png', site).href;
+const locale = lang === 'es' ? 'es_CL' : 'en_US';
+const altLocale = lang === 'es' ? 'en_US' : 'es_CL';
+
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'COMPASS',
+  alternateName: 'Competency & Profiling Simulation System',
+  url: new URL('/', site).href,
+  logo: new URL('/assets/logo-compass.png', site).href,
+  sameAs: [],
+};
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{t('meta.title')}</title>
+    <meta name="description" content={t('meta.description')} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="es" href={esUrl} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="x-default" href={esUrl} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="COMPASS" />
+    <meta property="og:title" content={t('meta.title')} />
+    <meta property="og:description" content={t('meta.description')} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={t('meta.ogAlt')} />
+    <meta property="og:locale" content={locale} />
+    <meta property="og:locale:alternate" content={altLocale} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={t('meta.title')} />
+    <meta name="twitter:description" content={t('meta.description')} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(organizationJsonLd)} />
+  </head>
+  <body class="min-h-screen bg-base text-ink">
+    <slot />
+
+    <script>
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      const revealEls = document.querySelectorAll('[data-reveal]');
+      if ('IntersectionObserver' in window && !reduceMotion) {
+        const revealObserver = new IntersectionObserver((entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              revealObserver.unobserve(entry.target);
+            }
+          }
+        }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
+        revealEls.forEach((el) => revealObserver.observe(el));
+      } else {
+        revealEls.forEach((el) => el.classList.add('is-visible'));
+      }
+
+      const runCounter = (el) => {
+        if (el.dataset.counted === 'true') return;
+        el.dataset.counted = 'true';
+        const target = Number(el.dataset.count ?? '0');
+        const suffix = el.dataset.suffix ?? '';
+        if (reduceMotion) {
+          el.textContent = `${target}${suffix}`;
+          return;
+        }
+        const start = performance.now();
+        const duration = 900;
+        const step = (now) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = `${Math.round(target * eased)}${suffix}`;
+          if (progress < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      };
+
+      const counters = document.querySelectorAll('[data-count]');
+      if ('IntersectionObserver' in window) {
+        const counterObserver = new IntersectionObserver((entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              runCounter(entry.target);
+              counterObserver.unobserve(entry.target);
+            }
+          }
+        }, { threshold: 0.35 });
+        counters.forEach((el) => counterObserver.observe(el));
+      } else {
+        counters.forEach(runCounter);
+      }
+
+      if (!reduceMotion) {
+        const parallaxEls = document.querySelectorAll('[data-parallax]');
+        window.addEventListener('pointermove', (event) => {
+          const x = (event.clientX / window.innerWidth - 0.5) * 2;
+          const y = (event.clientY / window.innerHeight - 0.5) * 2;
+          parallaxEls.forEach((el) => {
+            const depth = Number(el.dataset.parallax ?? '0');
+            el.style.transform = `translate3d(${x * depth * 80}px, ${y * depth * 80}px, 0)`;
+          });
+        }, { passive: true });
+      }
+
+      const currentLang = document.documentElement.lang;
+      const storedLang = window.localStorage.getItem('compass-lang');
+      if (currentLang === 'es' && storedLang === 'en' && window.location.pathname === '/') {
+        window.location.replace(`/en/${window.location.search}${window.location.hash}`);
+      }
+      document.querySelectorAll('[data-lang-switch]').forEach((link) => {
+        link.addEventListener('click', () => {
+          const next = link.getAttribute('data-lang-switch');
+          if (next) window.localStorage.setItem('compass-lang', next);
+        });
+      });
+
+      document.querySelectorAll('[data-contact-form]').forEach((form) => {
+        form.addEventListener('submit', (event) => {
+          event.preventDefault();
+          if (!form.reportValidity()) return;
+          const status = form.querySelector('[data-form-status]');
+          const data = new FormData(form);
+          const email = form.getAttribute('data-email') ?? '';
+          const success = form.getAttribute('data-success') ?? '';
+          const body = Array.from(data.entries())
+            .map(([key, value]) => `${key}: ${value}`)
+            .join('\n');
+          if (status) {
+            status.textContent = success;
+            status.removeAttribute('hidden');
+          }
+          window.location.href = `mailto:${email}?subject=${encodeURIComponent('COMPASS demo')}&body=${encodeURIComponent(body)}`;
+        });
+      });
+    </script>
+  </body>
+</html>
